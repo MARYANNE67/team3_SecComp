@@ -47,6 +47,16 @@ const mockScenarios: ScenarioOption[] = [
     },
   },
   {
+    id: 'invest-mutual-funds',
+    title: 'Invest in Mutual Funds',
+    description: 'Diversify your portfolio with a mix of mutual funds.',
+    impact: {
+      investments: 10,
+      savings: -5,
+      expenses: 0,
+    },
+  },
+  {
     id: 'buy-house',
     title: 'Purchase a Home',
     description: 'Buy a property in an up-and-coming neighborhood.',
@@ -54,6 +64,16 @@ const mockScenarios: ScenarioOption[] = [
       investments: -20,
       savings: -30,
       expenses: 20,
+    },
+  },
+  {
+    id: 'select-rent',
+    title: 'Select to Rent',
+    description: 'Opt to rent a home instead of buying, freeing up capital for other investments.',
+    impact: {
+      investments: 5,
+      savings: 10,
+      expenses: -15,
     },
   },
   {
@@ -69,7 +89,7 @@ const mockScenarios: ScenarioOption[] = [
   {
     id: 'conservative-savings',
     title: 'Focus on Savings',
-    description: 'Maximize your savings with high-yield accounts.',
+    description: 'Maximize your savings with adding funds to high-yield accounts.',
     impact: {
       investments: -10,
       savings: 30,
@@ -77,6 +97,13 @@ const mockScenarios: ScenarioOption[] = [
     },
   },
 ];
+
+const categorizedScenarios = {
+  investments: mockScenarios.filter(scenario => scenario.id.includes('invest')),
+  housing: mockScenarios.filter(scenario => scenario.id.includes('house') || scenario.id.includes('rent')),
+  expenses: mockScenarios.filter(scenario => scenario.id.includes('expenses')),
+  savings: mockScenarios.filter(scenario => scenario.id.includes('savings')),
+};
 
 export default function Simulator() {
   const [simulationState, setSimulationState] = useState<SimulationState>(initialState);
@@ -155,11 +182,51 @@ export default function Simulator() {
               {isComplete ? (
                 <ResultsView decisions={simulationState.decisions} finalState={simulationState} />
               ) : (
-                <ScenarioStep
-                  year={simulationState.currentYear}
-                  options={mockScenarios}
-                  onSelect={handleScenarioSelect}
-                />
+                <>
+                  <Typography variant="h5" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
+                  Year {simulationState.currentYear}
+                  </Typography>
+                  <Box sx={{ mb: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      Investments
+                    </Typography>
+                    <ScenarioStep 
+                      year={simulationState.currentYear}
+                      options={categorizedScenarios.investments} 
+                      onSelect={handleScenarioSelect} 
+                    />
+                  </Box>
+                  <Box sx={{ mb: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      Housing
+                    </Typography>
+                    <ScenarioStep 
+                      year={simulationState.currentYear}
+                      options={categorizedScenarios.housing} 
+                      onSelect={handleScenarioSelect} 
+                    />
+                  </Box>
+                  <Box sx={{ mb: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      Expenses
+                    </Typography>
+                    <ScenarioStep 
+                      year={simulationState.currentYear}
+                      options={categorizedScenarios.expenses} 
+                      onSelect={handleScenarioSelect} 
+                    />
+                  </Box>
+                  <Box sx={{ mb: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      Reducing Savings
+                    </Typography>
+                    <ScenarioStep 
+                      year={simulationState.currentYear}
+                      options={categorizedScenarios.savings} 
+                      onSelect={handleScenarioSelect}
+                    />
+                  </Box>
+                </>
               )}
             </Box>
           </Paper>

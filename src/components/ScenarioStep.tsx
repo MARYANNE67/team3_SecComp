@@ -21,10 +21,6 @@ interface ScenarioStepProps {
 export default function ScenarioStep({ year, options, onSelect }: ScenarioStepProps) {
   return (
     <Box>
-      <Typography variant="h5" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
-        Year {year} - Make Your Financial Decisions
-      </Typography>
-
       <Grid container spacing={3}>
         {options.map((option) => (
           <Grid item xs={12} md={6} key={option.id}>
