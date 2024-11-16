@@ -130,7 +130,7 @@ const mockScenarios: ScenarioOption[] = [
   {
     id: 'keep-house',
     title: 'Keep Your House',
-    description: 'Continue living in your current home and paying a monthly morgage.',
+    description: 'Continue living in your current home and paying a monthly morgage. Your net worth will increase by the house worth of that year.',
     impact: {
       investments: 0,
       savings: 0,
@@ -319,11 +319,13 @@ export default function Simulator() {
 
     // Update housing costs per year
     const houseData = house_Data[(simulationState.currentYear + 1).toString()];
+    const previousHouseData = house_Data[simulationState.currentYear.toString()];
     if (option.id === 'keep-house') {
       if (simulationState.currentYear === 2024) {
-        newState.netWorth += houseData["House Worth (CAD)"];
+        newState.netWorth += Math.floor(houseData["House Worth (CAD)"]);
       }
-      newState.expenses += houseData["Fixed Monthly Payment (CAD)"];
+      newState.expenses -= Math.floor(previousHouseData["Fixed Monthly Payment (CAD)"]);
+      newState.expenses += Math.floor(houseData["Fixed Monthly Payment (CAD)"]);
     } else {
       newState.expenses -= 2500;
     }
