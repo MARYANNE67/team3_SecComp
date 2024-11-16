@@ -1,5 +1,21 @@
-## TODO:
-1. Before going to another year, we must have selected all the options
-2. Can only choose one option from each category
-3. Save user decision and outcomes
-4. Add predicted data 
+# Financial Simulator - Team 3
+
+Names: Anne, Masuma, Chloe
+
+## Deployed app
+
+[Financial Simulator - Team 3](http://example.com)
+
+## Running the app
+
+1. Clone the repository
+
+2. Install the required dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the application:
+   ```sh
+   npm run dev
+   ```
+4. Open your browser and go to `http://localhost:5173/` to view the app.
