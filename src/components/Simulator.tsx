@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import logo from '/assets/logo2.png';
 
 import {
@@ -42,6 +43,59 @@ const initialState: SimulationState = {
   decisions: [],
 };
 
+const house_Data: { [key: string]: { "House Worth (CAD)": number; "Fixed Rate (%)": number; "Fixed Monthly Payment (CAD)": number } } = {
+  "2024": {
+    "House Worth (CAD)": 1265000.1249999376,
+    "Fixed Rate (%)": 8.585001347499325,
+    "Fixed Monthly Payment (CAD)": 3295.7305315947347
+  },
+  "2025": {
+    "House Worth (CAD)": 1275000.1249999376,
+    "Fixed Rate (%)": 8.585001347499325,
+    "Fixed Monthly Payment (CAD)": 3295.7305315947347
+  },
+  "2026": {
+    "House Worth (CAD)": 1300000.1249999376,
+    "Fixed Rate (%)": 8.135001347499326,
+    "Fixed Monthly Payment (CAD)": 3203.9005315947343
+  },
+  "2027": {
+    "House Worth (CAD)": 1325000.1249999376,
+    "Fixed Rate (%)": 7.985001347499326,
+    "Fixed Monthly Payment (CAD)": 3173.760531594734
+  },
+  "2028": {
+    "House Worth (CAD)": 1425000.1249999376,
+    "Fixed Rate (%)": 7.985001347499326,
+    "Fixed Monthly Payment (CAD)": 3173.760531594734
+  },
+  "2029": {
+    "House Worth (CAD)": 1525000.1249999376,
+    "Fixed Rate (%)": 7.985001347499326,
+    "Fixed Monthly Payment (CAD)": 3173.760531594734
+  },
+  "2030": {
+    "House Worth (CAD)": 1475000.1249999376,
+    "Fixed Rate (%)": 8.685001347499327,
+    "Fixed Monthly Payment (CAD)": 3316.420531594734
+  },
+  "2031": {
+    "House Worth (CAD)": 1500000.1249999376,
+    "Fixed Rate (%)": 8.685001347499327,
+    "Fixed Monthly Payment (CAD)": 3316.420531594734
+  },
+  "2032": {
+    "House Worth (CAD)": 1550000.1249999376,
+    "Fixed Rate (%)": 8.285001347499328,
+    "Fixed Monthly Payment (CAD)": 3234.280531594734
+  },
+  "2033": {
+    "House Worth (CAD)": 1625000.1249999376,
+    "Fixed Rate (%)": 8.135001347499328,
+    "Fixed Monthly Payment (CAD)": 3203.900531594734
+  }
+};
+
 const mockScenarios: ScenarioOption[] = [
   {
     id: 'invest-stocks',
@@ -74,19 +128,19 @@ const mockScenarios: ScenarioOption[] = [
     },
   },
   {
-    id: 'buy-house',
-    title: 'Purchase a Home',
-    description: 'Buy a property in an up-and-coming neighborhood.',
+    id: 'keep-house',
+    title: 'Keep Your House',
+    description: 'Continue living in your current home and paying a monthly morgage.',
     impact: {
-      investments: 500000,
-      savings: -100000,
-      expenses: 2000,
+      investments: 0,
+      savings: 0,
+      expenses: 0,
     },
   },
   {
     id: 'select-rent',
     title: 'Select to Rent',
-    description: 'Opt to rent a home instead of buying, freeing up capital for other investments.',
+    description: 'Opt to sell your home and rent a property instead.',
     impact: {
       investments: 500,
       savings: 1000,
@@ -256,12 +310,23 @@ export default function Simulator() {
         {
           year: simulationState.currentYear,
           investmentChoice: option.id,
-          housingChoice: option.id === 'buy-house' ? 'buy' : 'rent',
+          housingChoice: option.id === 'keep-house' ? 'keep' : 'rent',
           expenseReduction: option.impact.expenses,
           savingsAllocation: option.impact.savings,
         },
       ],
     };
+
+    // Update housing costs per year
+    const houseData = house_Data[(simulationState.currentYear + 1).toString()];
+    if (option.id === 'keep-house') {
+      if (simulationState.currentYear === 2024) {
+        newState.netWorth += houseData["House Worth (CAD)"];
+      }
+      newState.expenses += houseData["Fixed Monthly Payment (CAD)"];
+    } else {
+      newState.expenses -= 2500;
+    }
   
     return newState;
   };
