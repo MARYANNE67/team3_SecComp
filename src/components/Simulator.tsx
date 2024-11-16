@@ -14,6 +14,7 @@ import ScenarioStep from './ScenarioStep';
 import FinancialMetrics from './FinancialMetrics';
 import ResultsView from './ResultsView';
 import { SimulationState, ScenarioOption } from '../types';
+import StartModal from './StartModal';
 
 const theme = createTheme({
   palette: {
@@ -26,12 +27,16 @@ const theme = createTheme({
   },
 });
 
+const getRandomValue = (base: number, variance: number) => {
+  return base + Math.floor(Math.random() * variance * 2) - variance;
+};
+
 const initialState: SimulationState = {
   currentYear: 2024,
-  netWorth: 100000,
-  savings: 50000,
-  investments: 50000,
-  expenses: 3000,
+  netWorth: getRandomValue(100000, 20000),
+  savings: getRandomValue(50000, 10000),
+  investments: getRandomValue(50000, 10000),
+  expenses: getRandomValue(3000, 500),
   decisions: [],
 };
 
@@ -210,6 +215,7 @@ const categorizedScenarios = {
 
 export default function Simulator() {
   const [simulationState, setSimulationState] = useState<SimulationState>(initialState);
+  const [startModalOpen, setStartModalOpen] = useState(true);
   const [selectedRandom, setSelectedRandom] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(false);
   const [selectedHousing, setSelectedHousing] = useState(false);
@@ -292,14 +298,23 @@ export default function Simulator() {
               component="h1" 
               gutterBottom
               sx={{ 
-                color: theme.palette.primary.main,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                mb: 4
+              color: theme.palette.primary.main,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              mb: 4
               }}
             >
               Financial Decision Simulator
             </Typography>
+
+            {startModalOpen && (
+              <StartModal 
+                open={true} 
+                handleClose={() => setStartModalOpen(false)} 
+                initialState={initialState}
+              />
+            )
+            }
 
             <Stepper 
               activeStep={Math.min(9, simulationState.currentYear - 2024)} 
