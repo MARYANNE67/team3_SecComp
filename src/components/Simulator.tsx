@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logo from '/assets/logo2.png';
+
 import {
   Box,
   Container,
@@ -279,26 +281,35 @@ export default function Simulator() {
     <ThemeProvider theme={theme}>
       <Container maxWidth="lg">
         <Box sx={{ py: 4 }}>
-          <Paper 
-            elevation={3} 
-            sx={{ 
-              p: 4, 
-              borderRadius: 2,
-              background: 'linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%)'
-            }}
-          >
-            <Typography 
-              variant="h4" 
-              component="h1" 
-              gutterBottom
-              sx={{ 
-                color: theme.palette.primary.main,
-                fontWeight: 'bold',
-                textAlign: 'center',
-                mb: 4
-              }}
-            >
-              Financial Decision Simulator
+        <Paper 
+  elevation={3} 
+  sx={{ 
+    p: 4, 
+    borderRadius: 2,
+    background: 'linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%)'
+  }}
+>
+  {/* Add the logo here */}
+  <Box sx={{ textAlign: 'center', mb: 4 }}>
+    <img
+      src={logo}
+      alt="Company Logo"
+      style={{ width: '150px', height: 'auto' }}
+    />
+  </Box>
+
+  <Typography 
+    variant="h4" 
+    component="h1" 
+    gutterBottom
+    sx={{ 
+      color: theme.palette.primary.main,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      mb: 4
+    }}
+  >
+    Time travel stimulator for 10 years prediction
             </Typography>
 
             <Stepper 
