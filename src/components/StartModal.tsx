@@ -22,7 +22,7 @@ const StartModal: React.FC<StartModalProps> = ({ open, handleClose, initialState
                     Welcome to the Financial Simulator! You are starting in year {initialState.currentYear}.
                 </Typography>
                 <Typography variant="body1">
-                    Your goal is to retire with a net worth of $1,000,000. You can achieve this by making decisions each year to increase your savings and investments, while managing your expenses. Good luck!
+                    Your goal is to retire with a net worth of $100,000. You can achieve this by making decisions each year to increase your savings and investments, while managing your expenses. Good luck!
                 </Typography>
             </DialogContent>
             <DialogContent>

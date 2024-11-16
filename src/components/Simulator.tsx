@@ -35,8 +35,8 @@ const getRandomValue = (base: number, variance: number) => {
 
 const initialState: SimulationState = {
   currentYear: 2024,
-  netWorth: getRandomValue(100000, 20000),
-  savings: getRandomValue(50000, 10000),
+  netWorth: getRandomValue(10000, 20000),
+  savings: getRandomValue(5000, 10000),
   investments: getRandomValue(50000, 10000),
   expenses: getRandomValue(3000, 500),
   decisions: [],
@@ -48,8 +48,8 @@ const mockScenarios: ScenarioOption[] = [
     title: 'Invest in High-Growth Stocks',
     description: 'Allocate a significant portion of your portfolio to promising tech stocks.',
     impact: {
-      investments: 15,
-      savings: -10,
+      investments: 1500,
+      savings: -1000,
       expenses: 0,
     },
   },
@@ -58,8 +58,8 @@ const mockScenarios: ScenarioOption[] = [
     title: 'Invest in Mutual Funds',
     description: 'Diversify your portfolio with a mix of mutual funds.',
     impact: {
-      investments: 10,
-      savings: -5,
+      investments: 1000,
+      savings: -500,
       expenses: 0,
     },
   },
@@ -78,9 +78,9 @@ const mockScenarios: ScenarioOption[] = [
     title: 'Purchase a Home',
     description: 'Buy a property in an up-and-coming neighborhood.',
     impact: {
-      investments: -20,
-      savings: -30,
-      expenses: 20,
+      investments: 500000,
+      savings: -100000,
+      expenses: 2000,
     },
   },
   {
@@ -88,9 +88,9 @@ const mockScenarios: ScenarioOption[] = [
     title: 'Select to Rent',
     description: 'Opt to rent a home instead of buying, freeing up capital for other investments.',
     impact: {
-      investments: 5,
-      savings: 10,
-      expenses: -15,
+      investments: 500,
+      savings: 1000,
+      expenses: -1500,
     },
   },
   {
@@ -99,8 +99,8 @@ const mockScenarios: ScenarioOption[] = [
     description: 'Eliminate spending on luxury items and services.',
     impact: {
       investments: 0,
-      savings: 15,
-      expenses: -20,
+      savings: 1500,
+      expenses: -2000,
     },
   },
   {
@@ -109,8 +109,8 @@ const mockScenarios: ScenarioOption[] = [
     description: 'Reduce spending on entertainment such as movies, dining out, and subscriptions.',
     impact: {
       investments: 0,
-      savings: 10,
-      expenses: -15,
+      savings: 1000,
+      expenses: -1000,
     },
   },
   {
@@ -119,8 +119,8 @@ const mockScenarios: ScenarioOption[] = [
     description: 'Optimize your utility usage to lower bills.',
     impact: {
       investments: 0,
-      savings: 5,
-      expenses: -10,
+      savings: 500,
+      expenses: -1000,
     },
   },
   {
@@ -138,9 +138,9 @@ const mockScenarios: ScenarioOption[] = [
     title: 'Focus on Savings',
     description: 'Maximize your savings with adding funds to high-yield accounts.',
     impact: {
-      investments: -10,
-      savings: 30,
-      expenses: -10,
+      investments: -1000,
+      savings: 3000,
+      expenses: -1000,
     },
   },
   {
@@ -161,9 +161,9 @@ const randomScenarios: ScenarioOption[] = [
     title: 'Unexpected Medical Expense',
     description: 'You have an unexpected medical expense that impacts your finances.',
     impact: {
-      investments: Math.floor(Math.random() * -10),
-      savings: Math.floor(Math.random() * -20),
-      expenses: Math.floor(Math.random() * -15),
+      investments: Math.floor(Math.random() * -1000),
+      savings: Math.floor(Math.random() * -2000),
+      expenses: Math.floor(Math.random() * -1500),
     },
   },
   {
@@ -171,9 +171,9 @@ const randomScenarios: ScenarioOption[] = [
     title: 'Car Repair',
     description: 'Your car needs a major repair, affecting your budget.',
     impact: {
-      investments: Math.floor(Math.random() * -5),
-      savings: Math.floor(Math.random() * -10),
-      expenses: Math.floor(Math.random() * -10),
+      investments: Math.floor(Math.random() * -500),
+      savings: Math.floor(Math.random() * -1000),
+      expenses: Math.floor(Math.random() * -1000),
     },
   },
   {
@@ -181,9 +181,9 @@ const randomScenarios: ScenarioOption[] = [
     title: 'Job Loss',
     description: 'You lose your job and need to manage your finances carefully.',
     impact: {
-      investments: Math.floor(Math.random() * -15),
-      savings: Math.floor(Math.random() * -30),
-      expenses: Math.floor(Math.random() * -20),
+      investments: Math.floor(Math.random() * -1500),
+      savings: Math.floor(Math.random() * -3000),
+      expenses: Math.floor(Math.random() * -2000),
     },
   },
   {
@@ -191,9 +191,9 @@ const randomScenarios: ScenarioOption[] = [
     title: 'Home Repair',
     description: 'Your home requires an urgent repair, impacting your savings.',
     impact: {
-      investments: Math.floor(Math.random() * -10),
-      savings: Math.floor(Math.random() * -20),
-      expenses: Math.floor(Math.random() * -15),
+      investments: Math.floor(Math.random() * -1000),
+      savings: Math.floor(Math.random() * -2000),
+      expenses: Math.floor(Math.random() * -1500),
     },
   },
   {
@@ -201,8 +201,8 @@ const randomScenarios: ScenarioOption[] = [
     title: 'Market Downturn',
     description: 'A market downturn affects your investments negatively.',
     impact: {
-      investments: Math.floor(Math.random() * -20),
-      savings: Math.floor(Math.random() * -10),
+      investments: Math.floor(Math.random() * -2000),
+      savings: Math.floor(Math.random() * -1000),
       expenses: 0,
     },
   },
@@ -244,24 +244,27 @@ export default function Simulator() {
       }
   }
 
-  const calculationLogic = (option: ScenarioOption) =>{
+  const calculationLogic = (option: ScenarioOption) => {
     const newState = {
       ...simulationState,
-      netWorth: simulationState.netWorth * (1 + (option.impact.investments + option.impact.savings) / 100),
-      savings: simulationState.savings * (1 + option.impact.savings / 100),
-      investments: simulationState.investments * (1 + option.impact.investments / 100),
-      expenses: simulationState.expenses * (1 + option.impact.expenses / 100),
-      decisions: [...simulationState.decisions, {
-        year: simulationState.currentYear,
-        investmentChoice: option.id,
-        housingChoice: option.id === 'buy-house' ? 'buy' : 'rent',
-        expenseReduction: option.impact.expenses,
-        savingsAllocation: option.impact.savings,
-      }],
+      netWorth: simulationState.netWorth + option.impact.investments + option.impact.savings,
+      savings: simulationState.savings + option.impact.savings,
+      investments: simulationState.investments + option.impact.investments,
+      expenses: simulationState.expenses + option.impact.expenses,
+      decisions: [
+        ...simulationState.decisions,
+        {
+          year: simulationState.currentYear,
+          investmentChoice: option.id,
+          housingChoice: option.id === 'buy-house' ? 'buy' : 'rent',
+          expenseReduction: option.impact.expenses,
+          savingsAllocation: option.impact.savings,
+        },
+      ],
     };
-
-    return newState
-  }
+  
+    return newState;
+  };
 
   const handleFinalSelect = (option: ScenarioOption) => {
     // setCountSelected(countSelected+1);
