@@ -148,6 +148,59 @@ const mockScenarios: ScenarioOption[] = [
   },
 ];
 
+const randomScenarios: ScenarioOption[] = [
+  {
+    id: 'unexpected-expense',
+    title: 'Unexpected Medical Expense',
+    description: 'You have an unexpected medical expense that impacts your finances.',
+    impact: {
+      investments: Math.floor(Math.random() * -10),
+      savings: Math.floor(Math.random() * -20),
+      expenses: Math.floor(Math.random() * -15),
+    },
+  },
+  {
+    id: 'car-repair',
+    title: 'Car Repair',
+    description: 'Your car needs a major repair, affecting your budget.',
+    impact: {
+      investments: Math.floor(Math.random() * -5),
+      savings: Math.floor(Math.random() * -10),
+      expenses: Math.floor(Math.random() * -10),
+    },
+  },
+  {
+    id: 'job-loss',
+    title: 'Job Loss',
+    description: 'You lose your job and need to manage your finances carefully.',
+    impact: {
+      investments: Math.floor(Math.random() * -15),
+      savings: Math.floor(Math.random() * -30),
+      expenses: Math.floor(Math.random() * -20),
+    },
+  },
+  {
+    id: 'home-repair',
+    title: 'Home Repair',
+    description: 'Your home requires an urgent repair, impacting your savings.',
+    impact: {
+      investments: Math.floor(Math.random() * -10),
+      savings: Math.floor(Math.random() * -20),
+      expenses: Math.floor(Math.random() * -15),
+    },
+  },
+  {
+    id: 'market-downturn',
+    title: 'Market Downturn',
+    description: 'A market downturn affects your investments negatively.',
+    impact: {
+      investments: Math.floor(Math.random() * -20),
+      savings: Math.floor(Math.random() * -10),
+      expenses: 0,
+    },
+  },
+];
+
 const categorizedScenarios = {
   investments: mockScenarios.filter(scenario => scenario.id.includes('invest')),
   housing: mockScenarios.filter(scenario => scenario.id.includes('house') || scenario.id.includes('rent')),
@@ -157,6 +210,7 @@ const categorizedScenarios = {
 
 export default function Simulator() {
   const [simulationState, setSimulationState] = useState<SimulationState>(initialState);
+  const [selectedRandom, setSelectedRandom] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(false);
   const [selectedHousing, setSelectedHousing] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(false);
@@ -165,7 +219,6 @@ export default function Simulator() {
   const [isComplete, setIsComplete] = useState(false);
 
   const handleScenarioSelect = (option: ScenarioOption) => {
-
       if (option.id.includes('invest')) {
         setSelectedInvestment(true);
         const newState = calculationLogic(option);
@@ -217,6 +270,7 @@ export default function Simulator() {
     setSelectedInvestment(false);
     setSelectedExpense(false);
     setSelectedSaving(false);
+    setSelectedRandom(false);
 
     setSimulationState(newState);
   };
@@ -275,7 +329,25 @@ export default function Simulator() {
                   Year {simulationState.currentYear}
                   </Typography>
 
-                  {!selectedInvestment &&
+                  {!selectedRandom && (
+                      <Box sx={{ mb: 3 }}>
+                        <Typography variant="h6" gutterBottom>
+                          Random Events
+                        </Typography>
+                        <ScenarioStep 
+                          year={simulationState.currentYear}
+                          options={randomScenarios} 
+                          onSelect={(option) => {
+                            const newState = calculationLogic(option);
+                            setSimulationState(newState);
+                            setSelectedRandom(true);
+                          }}
+                        />
+                      </Box>
+                    )
+                  }
+
+                  {!selectedInvestment && selectedRandom && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Investments
@@ -285,9 +357,9 @@ export default function Simulator() {
                       options={categorizedScenarios.investments} 
                       onSelect={handleScenarioSelect} 
                     />
-                  </Box> } 
+                  </Box> )}
 
-                  {selectedInvestment && !selectedHousing && (
+                  {selectedRandom && selectedInvestment && !selectedHousing && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Housing
@@ -299,7 +371,7 @@ export default function Simulator() {
                     />
                   </Box> )}
 
-                {selectedInvestment && selectedHousing && !selectedExpense && (
+                {selectedRandom && selectedInvestment && selectedHousing && !selectedExpense && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Expenses
@@ -312,7 +384,7 @@ export default function Simulator() {
                   </Box>)
                 }
 
-                {selectedInvestment && selectedHousing && selectedExpense && !selectedSaving && (
+                {selectedRandom && selectedInvestment && selectedHousing && selectedExpense && !selectedSaving && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Reducing Savings
