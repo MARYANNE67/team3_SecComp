@@ -1,0 +1,250 @@
+{
+    "predicted_stock_and_mutual_fund": [
+        {
+            "Year": 2024,
+            "Stock Open (CAD)": 144.0291813196157,
+            "Stock Close (CAD)": 144.15405631918216,
+            "Mutual Fund Price": 19.420616339493417
+        },
+        {
+            "Year": 2025,
+            "Stock Open (CAD)": 150.49062335136173,
+            "Stock Close (CAD)": 150.59894847791233,
+            "Mutual Fund Price": 19.702500466477545
+        },
+        {
+            "Year": 2026,
+            "Stock Open (CAD)": 147.64512576406014,
+            "Stock Close (CAD)": 147.7565999699758,
+            "Mutual Fund Price": 20.66617189504897
+        },
+        {
+            "Year": 2027,
+            "Stock Open (CAD)": 153.4506535418379,
+            "Stock Close (CAD)": 153.5871912398171,
+            "Mutual Fund Price": 22.204624276001358
+        },
+        {
+            "Year": 2028,
+            "Stock Open (CAD)": 160.09395909739345,
+            "Stock Close (CAD)": 160.19006822394408,
+            "Mutual Fund Price": 22.96387030774739
+        },
+        {
+            "Year": 2029,
+            "Stock Open (CAD)": 157.0541138592982,
+            "Stock Close (CAD)": 157.20290552553138,
+            "Mutual Fund Price": 22.51894967282675
+        },
+        {
+            "Year": 2030,
+            "Stock Open (CAD)": 168.26371420395134,
+            "Stock Close (CAD)": 168.41499265321113,
+            "Mutual Fund Price": 23.716036721457627
+        },
+        {
+            "Year": 2031,
+            "Stock Open (CAD)": 177.99235962227803,
+            "Stock Close (CAD)": 178.10496078070116,
+            "Mutual Fund Price": 25.71472198042177
+        },
+        {
+            "Year": 2032,
+            "Stock Open (CAD)": 183.2310741767585,
+            "Stock Close (CAD)": 183.4511118747377,
+            "Mutual Fund Price": 25.262560783937865
+        },
+        {
+            "Year": 2033,
+            "Stock Open (CAD)": 226.1082573908874,
+            "Stock Close (CAD)": 226.312052288189,
+            "Mutual Fund Price": 27.473381098888616
+        }
+    ],
+    "predicted_savings_interest_rate": [
+        {
+            "Year": 2024,
+            "ANNUAL  Savings Interest Rate (%)": 1.20000029999985
+        },
+        {
+            "Year": 2025,
+            "ANNUAL  Savings Interest Rate (%)": 1.1500002999998498
+        },
+        {
+            "Year": 2026,
+            "ANNUAL  Savings Interest Rate (%)": 1.10000029999985
+        },
+        {
+            "Year": 2027,
+            "ANNUAL  Savings Interest Rate (%)": 1.05000029999985
+        },
+        {
+            "Year": 2028,
+            "ANNUAL  Savings Interest Rate (%)": 0.9000002999998499
+        },
+        {
+            "Year": 2029,
+            "ANNUAL  Savings Interest Rate (%)": 0.8000002999998499
+        },
+        {
+            "Year": 2030,
+            "ANNUAL  Savings Interest Rate (%)": 0.9000002999998499
+        },
+        {
+            "Year": 2031,
+            "ANNUAL  Savings Interest Rate (%)": 1.00000029999985
+        },
+        {
+            "Year": 2032,
+            "ANNUAL  Savings Interest Rate (%)": 1.2000002999998498
+        },
+        {
+            "Year": 2033,
+            "ANNUAL  Savings Interest Rate (%)": 0.8000002999998499
+        }
+    ],
+    "predicted_income_and_expenses": [
+        {
+            "Year": 2024,
+            "Average Annual Income (CAD)": 143447.1891699604,
+            "Inflation Rate (%)": 6.850000724999637,
+            "Fixed Monthly Expenses (CAD)": 1493.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 990.0001249999376,
+            "Monthly Average Rent (CAD)": 2233.0002524998736
+        },
+        {
+            "Year": 2025,
+            "Average Annual Income (CAD)": 143282.1391699604,
+            "Inflation Rate (%)": 6.250000724999636,
+            "Fixed Monthly Expenses (CAD)": 1516.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1010.0001249999376,
+            "Monthly Average Rent (CAD)": 2238.0002524998736
+        },
+        {
+            "Year": 2026,
+            "Average Annual Income (CAD)": 142998.8491699604,
+            "Inflation Rate (%)": 7.350000724999637,
+            "Fixed Monthly Expenses (CAD)": 1538.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1030.0001249999375,
+            "Monthly Average Rent (CAD)": 2274.0002524998736
+        },
+        {
+            "Year": 2027,
+            "Average Annual Income (CAD)": 145528.9491699604,
+            "Inflation Rate (%)": 6.4500007249996365,
+            "Fixed Monthly Expenses (CAD)": 1565.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1050.0001249999375,
+            "Monthly Average Rent (CAD)": 2313.0002524998736
+        },
+        {
+            "Year": 2028,
+            "Average Annual Income (CAD)": 155123.8391699604,
+            "Inflation Rate (%)": 6.750000724999636,
+            "Fixed Monthly Expenses (CAD)": 1595.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1070.0001249999375,
+            "Monthly Average Rent (CAD)": 2340.0002524998736
+        },
+        {
+            "Year": 2029,
+            "Average Annual Income (CAD)": 153766.7791699604,
+            "Inflation Rate (%)": 6.9500007249996365,
+            "Fixed Monthly Expenses (CAD)": 1625.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1090.0001249999375,
+            "Monthly Average Rent (CAD)": 2405.0002524998736
+        },
+        {
+            "Year": 2030,
+            "Average Annual Income (CAD)": 155782.4991699604,
+            "Inflation Rate (%)": 7.650000724999636,
+            "Fixed Monthly Expenses (CAD)": 1663.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1110.0001249999375,
+            "Monthly Average Rent (CAD)": 2499.0002524998736
+        },
+        {
+            "Year": 2031,
+            "Average Annual Income (CAD)": 155260.96916996042,
+            "Inflation Rate (%)": 7.250000724999635,
+            "Fixed Monthly Expenses (CAD)": 1701.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1130.0001249999375,
+            "Monthly Average Rent (CAD)": 2565.0002524998736
+        },
+        {
+            "Year": 2032,
+            "Average Annual Income (CAD)": 173272.2991699604,
+            "Inflation Rate (%)": 6.050000724999635,
+            "Fixed Monthly Expenses (CAD)": 1735.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1150.0001249999375,
+            "Monthly Average Rent (CAD)": 2577.0002524998736
+        },
+        {
+            "Year": 2033,
+            "Average Annual Income (CAD)": 171495.85916996043,
+            "Inflation Rate (%)": 8.750000724999635,
+            "Fixed Monthly Expenses (CAD)": 1783.5001802499098,
+            "Non-Essential Monthly Expenses (CAD)": 1170.0001249999375,
+            "Monthly Average Rent (CAD)": 2643.0002524998736
+        }
+    ],
+    "predicted_house_and_mortgage": [
+        {
+            "Year": 2024,
+            "House Worth (CAD)": 1265000.1249999376,
+            "Fixed Rate (%)": 8.585001347499325,
+            "Fixed Monthly Payment (CAD)": 3295.7305315947347
+        },
+        {
+            "Year": 2025,
+            "House Worth (CAD)": 1275000.1249999376,
+            "Fixed Rate (%)": 8.585001347499325,
+            "Fixed Monthly Payment (CAD)": 3295.7305315947347
+        },
+        {
+            "Year": 2026,
+            "House Worth (CAD)": 1300000.1249999376,
+            "Fixed Rate (%)": 8.135001347499326,
+            "Fixed Monthly Payment (CAD)": 3203.9005315947343
+        },
+        {
+            "Year": 2027,
+            "House Worth (CAD)": 1325000.1249999376,
+            "Fixed Rate (%)": 7.985001347499326,
+            "Fixed Monthly Payment (CAD)": 3173.760531594734
+        },
+        {
+            "Year": 2028,
+            "House Worth (CAD)": 1425000.1249999376,
+            "Fixed Rate (%)": 7.985001347499326,
+            "Fixed Monthly Payment (CAD)": 3173.760531594734
+        },
+        {
+            "Year": 2029,
+            "House Worth (CAD)": 1525000.1249999376,
+            "Fixed Rate (%)": 7.985001347499326,
+            "Fixed Monthly Payment (CAD)": 3173.760531594734
+        },
+        {
+            "Year": 2030,
+            "House Worth (CAD)": 1475000.1249999376,
+            "Fixed Rate (%)": 8.685001347499327,
+            "Fixed Monthly Payment (CAD)": 3316.420531594734
+        },
+        {
+            "Year": 2031,
+            "House Worth (CAD)": 1500000.1249999376,
+            "Fixed Rate (%)": 8.685001347499327,
+            "Fixed Monthly Payment (CAD)": 3316.420531594734
+        },
+        {
+            "Year": 2032,
+            "House Worth (CAD)": 1550000.1249999376,
+            "Fixed Rate (%)": 8.285001347499328,
+            "Fixed Monthly Payment (CAD)": 3234.280531594734
+        },
+        {
+            "Year": 2033,
+            "House Worth (CAD)": 1625000.1249999376,
+            "Fixed Rate (%)": 8.135001347499328,
+            "Fixed Monthly Payment (CAD)": 3203.900531594734
+        }
+    ]
+}
