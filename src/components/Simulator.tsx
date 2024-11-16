@@ -295,27 +295,21 @@ export default function Simulator() {
     background: 'linear-gradient(145deg, #ffffff 0%, #f5f5f5 100%)'
   }}
 >
-  {/* Add the logo here */}
-  <Box sx={{ textAlign: 'center', mb: 4 }}>
-    <img
-      src={logo}
-      alt="Company Logo"
-      style={{ width: '150px', height: 'auto' }}
-    />
-  </Box>
-
-  <Typography 
-    variant="h4" 
-    component="h1" 
-    gutterBottom
-    sx={{ 
-      color: theme.palette.primary.main,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      mb: 4
-    }}
-  >
-    Time travel stimulator for 10 years prediction
+            <Typography 
+              variant="h4" 
+              component="h1" 
+              gutterBottom
+              sx={{ 
+                color: theme.palette.primary.main,
+                fontWeight: 'bold',
+                textAlign: 'center',
+                mb: 4
+              }}
+            >
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 4 }}>
+              <img src={logo} alt="Logo" style={{ marginRight: '10px', height: '50px' }} />
+              Time travel stimulator for 10 years prediction
+            </Box>
             </Typography>
 
             {startModalOpen && (
