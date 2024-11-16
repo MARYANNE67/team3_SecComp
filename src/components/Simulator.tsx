@@ -57,6 +57,16 @@ const mockScenarios: ScenarioOption[] = [
     },
   },
   {
+    id: 'invest-keep-money',
+    title: 'Keep Money',
+    description: 'Keep your money in a safe, low-risk account.',
+    impact: {
+      investments: 0,
+      savings: 0,
+      expenses: 0,
+    },
+  },
+  {
     id: 'buy-house',
     title: 'Purchase a Home',
     description: 'Buy a property in an up-and-coming neighborhood.',
@@ -77,13 +87,43 @@ const mockScenarios: ScenarioOption[] = [
     },
   },
   {
-    id: 'reduce-expenses',
-    title: 'Optimize Monthly Expenses',
-    description: 'Cut non-essential spending and optimize your budget.',
+    id: 'reduce-luxuries-expenses',
+    title: 'Cut Luxury Expenses',
+    description: 'Eliminate spending on luxury items and services.',
     impact: {
       investments: 0,
-      savings: 20,
-      expenses: -25,
+      savings: 15,
+      expenses: -20,
+    },
+  },
+  {
+    id: 'reduce-entertainment-expenses',
+    title: 'Cut Entertainment Expenses',
+    description: 'Reduce spending on entertainment such as movies, dining out, and subscriptions.',
+    impact: {
+      investments: 0,
+      savings: 10,
+      expenses: -15,
+    },
+  },
+  {
+    id: 'reduce-utilities-expenses',
+    title: 'Cut Utility Expenses',
+    description: 'Optimize your utility usage to lower bills.',
+    impact: {
+      investments: 0,
+      savings: 5,
+      expenses: -10,
+    },
+  },
+  {
+    id: 'cut-no-expenses',
+    title: 'Cut no expenses',
+    description: 'Cut no other expenses and keep your current lifestyle.',
+    impact: {
+      investments: 0,
+      savings: 0,
+      expenses: 0,
     },
   },
   {
@@ -94,6 +134,16 @@ const mockScenarios: ScenarioOption[] = [
       investments: -10,
       savings: 30,
       expenses: -10,
+    },
+  },
+  {
+    id: 'no-savings-account',
+    title: 'Do Not Use Savings Account',
+    description: 'Keep your money accessible without putting it into a savings account.',
+    impact: {
+      investments: 0,
+      savings: 0,
+      expenses: 0,
     },
   },
 ];
