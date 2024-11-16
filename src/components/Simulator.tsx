@@ -107,16 +107,10 @@ const categorizedScenarios = {
 
 export default function Simulator() {
   const [simulationState, setSimulationState] = useState<SimulationState>(initialState);
-  const [selectedAllCategory, setSelectedAllCategory] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(false);
   const [selectedHousing, setSelectedHousing] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(false);
   const [selectedSaving, setSelectedSaving] = useState(false);
-
-  const [selectedOption, setSelectedOption] = useState(null);
-
-
-  // const [countSelected, setCountSelected] = useState(0);
 
   const [isComplete, setIsComplete] = useState(false);
 
@@ -124,10 +118,16 @@ export default function Simulator() {
 
       if (option.id.includes('invest')) {
         setSelectedInvestment(true);
+        const newState = calculationLogic(option);
+        setSimulationState(newState);
       } else if (option.id.includes('house') || option.id.includes('rent')) {
         setSelectedHousing(true);
+        const newState = calculationLogic(option);
+        setSimulationState(newState);
       } else if (option.id.includes('expenses')) {
         setSelectedExpense(true);
+        const newState = calculationLogic(option);
+        setSimulationState(newState);
       } else if (option.id.includes('savings')) {
         setSelectedSaving(true);
       }
@@ -152,11 +152,8 @@ export default function Simulator() {
     return newState
   }
 
-
   const handleFinalSelect = (option: ScenarioOption) => {
     // setCountSelected(countSelected+1);
-
-  
     const newState = calculationLogic(option);
     newState.currentYear = simulationState.currentYear + 1;
 
@@ -170,7 +167,6 @@ export default function Simulator() {
     setSelectedInvestment(false);
     setSelectedExpense(false);
     setSelectedSaving(false);
-
 
     setSimulationState(newState);
   };
@@ -241,7 +237,7 @@ export default function Simulator() {
                     />
                   </Box> } 
 
-                  {selectedInvestment &&(
+                  {selectedInvestment && !selectedHousing && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Housing
@@ -253,7 +249,7 @@ export default function Simulator() {
                     />
                   </Box> )}
 
-                {selectedInvestment && selectedHousing &&(
+                {selectedInvestment && selectedHousing && !selectedExpense && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Expenses
@@ -266,7 +262,7 @@ export default function Simulator() {
                   </Box>)
                 }
 
-                {selectedInvestment && selectedHousing && selectedExpense &&(
+                {selectedInvestment && selectedHousing && selectedExpense && !selectedSaving && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Reducing Savings
@@ -274,10 +270,9 @@ export default function Simulator() {
                     <ScenarioStep 
                       year={simulationState.currentYear}
                       options={categorizedScenarios.savings} 
-                      onSelect={handleScenarioSelect}
+                      onSelect={handleFinalSelect}
                     />
                   </Box>)
-
                 }
                 </>
               )}
