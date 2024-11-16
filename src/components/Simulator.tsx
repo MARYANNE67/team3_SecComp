@@ -329,28 +329,34 @@ export default function Simulator() {
                   Year {simulationState.currentYear}
                   </Typography>
 
-                  {!selectedRandom && (
+                    {!selectedRandom && (
                       <Box sx={{ mb: 3 }}>
-                        <Typography variant="h6" gutterBottom>
-                          Random Events
-                        </Typography>
-                        <ScenarioStep 
-                          year={simulationState.currentYear}
-                          options={randomScenarios} 
-                          onSelect={(option) => {
-                            const newState = calculationLogic(option);
-                            setSimulationState(newState);
-                            setSelectedRandom(true);
-                          }}
-                        />
+                      <Typography variant="h6" gutterBottom>
+                        Random Events
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                        Select one of the random events that will impact your finances this year.
+                      </Typography>
+                      <ScenarioStep 
+                        year={simulationState.currentYear}
+                        options={randomScenarios.sort(() => 0.5 - Math.random()).slice(0, 2)} 
+                        onSelect={(option) => {
+                        const newState = calculationLogic(option);
+                        setSimulationState(newState);
+                        setSelectedRandom(true);
+                        }}
+                      />
                       </Box>
                     )
-                  }
+                    }
 
-                  {!selectedInvestment && selectedRandom && (
+                    {!selectedInvestment && selectedRandom && (
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Investments
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      Choose an investment strategy for the year.
                     </Typography>
                     <ScenarioStep 
                       year={simulationState.currentYear}
@@ -364,6 +370,9 @@ export default function Simulator() {
                     <Typography variant="h6" gutterBottom>
                       Housing
                     </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      Decide on your housing situation for the year.
+                    </Typography>
                     <ScenarioStep 
                       year={simulationState.currentYear}
                       options={categorizedScenarios.housing} 
@@ -375,6 +384,9 @@ export default function Simulator() {
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Expenses
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      Choose an expense reduction strategy for the year.
                     </Typography>
                     <ScenarioStep 
                       year={simulationState.currentYear}
@@ -388,6 +400,9 @@ export default function Simulator() {
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Reducing Savings
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      Choose a savings strategy for the year.
                     </Typography>
                     <ScenarioStep 
                       year={simulationState.currentYear}
