@@ -47,7 +47,7 @@ export default function ScenarioStep({ year, options, onSelect }: ScenarioStepPr
                   {option.impact.investments !== 0 && (
                     <Chip 
                       icon={option.impact.investments > 0 ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
-                      label={`Investment ${option.impact.investments > 0 ? '+' : ''}${option.impact.investments}%`}
+                      label={`Investment ${option.impact.investments > 0 ? '+' : ''}$${option.impact.investments}`}
                       color={option.impact.investments > 0 ? 'success' : 'error'}
                       size="small"
                     />
@@ -55,7 +55,7 @@ export default function ScenarioStep({ year, options, onSelect }: ScenarioStepPr
                   {option.impact.savings !== 0 && (
                     <Chip 
                       icon={<Wallet size={16} />}
-                      label={`Savings ${option.impact.savings > 0 ? '+' : ''}${option.impact.savings}%`}
+                      label={`Savings ${option.impact.savings > 0 ? '+' : ''}$${option.impact.savings}`}
                       color={option.impact.savings > 0 ? 'success' : 'error'}
                       size="small"
                     />
@@ -63,7 +63,7 @@ export default function ScenarioStep({ year, options, onSelect }: ScenarioStepPr
                   {option.impact.expenses !== 0 && (
                     <Chip 
                       icon={<Home size={16} />}
-                      label={`Expenses ${option.impact.expenses > 0 ? '+' : ''}${option.impact.expenses}%`}
+                      label={`Expenses ${option.impact.expenses > 0 ? '+' : ''}$${option.impact.expenses}`}
                       color={option.impact.expenses < 0 ? 'success' : 'error'}
                       size="small"
                     />
