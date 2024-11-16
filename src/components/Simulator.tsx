@@ -107,12 +107,35 @@ const categorizedScenarios = {
 
 export default function Simulator() {
   const [simulationState, setSimulationState] = useState<SimulationState>(initialState);
+  const [selectedAllCategory, setSelectedAllCategory] = useState(false);
+  const [selectedInvestment, setSelectedInvestment] = useState(false);
+  const [selectedHousing, setSelectedHousing] = useState(false);
+  const [selectedExpense, setSelectedExpense] = useState(false);
+  const [selectedSaving, setSelectedSaving] = useState(false);
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+
+  // const [countSelected, setCountSelected] = useState(0);
+
   const [isComplete, setIsComplete] = useState(false);
 
   const handleScenarioSelect = (option: ScenarioOption) => {
+
+      if (option.id.includes('invest')) {
+        setSelectedInvestment(true);
+      } else if (option.id.includes('house') || option.id.includes('rent')) {
+        setSelectedHousing(true);
+      } else if (option.id.includes('expenses')) {
+        setSelectedExpense(true);
+      } else if (option.id.includes('savings')) {
+        setSelectedSaving(true);
+      }
+  }
+
+  const calculationLogic = (option: ScenarioOption) =>{
     const newState = {
       ...simulationState,
-      currentYear: simulationState.currentYear + 1,
       netWorth: simulationState.netWorth * (1 + (option.impact.investments + option.impact.savings) / 100),
       savings: simulationState.savings * (1 + option.impact.savings / 100),
       investments: simulationState.investments * (1 + option.impact.investments / 100),
@@ -126,9 +149,28 @@ export default function Simulator() {
       }],
     };
 
+    return newState
+  }
+
+
+  const handleFinalSelect = (option: ScenarioOption) => {
+    // setCountSelected(countSelected+1);
+
+  
+    const newState = calculationLogic(option);
+    newState.currentYear = simulationState.currentYear + 1;
+
+
     if (simulationState.currentYear >= 2033) {
       setIsComplete(true);
     }
+
+    //reset
+    setSelectedHousing(false);
+    setSelectedInvestment(false);
+    setSelectedExpense(false);
+    setSelectedSaving(false);
+
 
     setSimulationState(newState);
   };
@@ -186,6 +228,8 @@ export default function Simulator() {
                   <Typography variant="h5" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
                   Year {simulationState.currentYear}
                   </Typography>
+
+                  {!selectedInvestment &&
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Investments
@@ -195,7 +239,9 @@ export default function Simulator() {
                       options={categorizedScenarios.investments} 
                       onSelect={handleScenarioSelect} 
                     />
-                  </Box>
+                  </Box> } 
+
+                  {selectedInvestment &&(
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Housing
@@ -205,7 +251,9 @@ export default function Simulator() {
                       options={categorizedScenarios.housing} 
                       onSelect={handleScenarioSelect} 
                     />
-                  </Box>
+                  </Box> )}
+
+                {selectedInvestment && selectedHousing &&(
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Expenses
@@ -215,7 +263,10 @@ export default function Simulator() {
                       options={categorizedScenarios.expenses} 
                       onSelect={handleScenarioSelect} 
                     />
-                  </Box>
+                  </Box>)
+                }
+
+                {selectedInvestment && selectedHousing && selectedExpense &&(
                   <Box sx={{ mb: 3 }}>
                     <Typography variant="h6" gutterBottom>
                       Reducing Savings
@@ -225,7 +276,9 @@ export default function Simulator() {
                       options={categorizedScenarios.savings} 
                       onSelect={handleScenarioSelect}
                     />
-                  </Box>
+                  </Box>)
+
+                }
                 </>
               )}
             </Box>
